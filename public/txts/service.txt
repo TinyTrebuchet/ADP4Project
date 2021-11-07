@@ -1,0 +1,70 @@
+
+    <div class="container my-10p px-20p">
+        <div class="card border-0">
+            <div class="card-header bg-gray">
+                <div class="d-flex justify-content-sm-center justify-content-center">
+                    <input id="card-title" class="py-1" type="text" name="service" placeholder="Pick Services" readonly>
+                    <span class="fa fa-calendar"></span>
+                </div>
+            </div>
+            <div class="card-body bg-light pt-5 px-5 pb-3">
+                <div class="border border-1 border-success rounded p-2 mb-2">
+                
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="100" id="defaultCheck1">
+                        <div class="d-flex justify-content-between">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Plain Haircut
+                            </label>
+                            <label class="form-check-label" for="defaultCheck1">
+                                100
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="150" id="defaultCheck1">
+                        <div class="d-flex justify-content-between">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Styled Haircut
+                            </label>
+                            <label class="form-check-label" for="defaultCheck1">
+                                150
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="100" id="defaultCheck1">
+                        <div class="d-flex justify-content-between">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Beard Trim
+                            </label>
+                            <label class="form-check-label" for="defaultCheck1">
+                                100
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="250" id="defaultCheck1">
+                        <div class="d-flex justify-content-between">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Facial
+                            </label>
+                            <label class="form-check-label" for="defaultCheck1">
+                                250
+                            </label>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="d-flex justify-content-end py-2">
+                    <!-- <input id="total" class="ms-2 px-2" type="text" readonly>
+                    <script>document.getElementById('total').value = "Total: \t\t\t0$"</script> -->
+                    <div class="border border-2 rounded p-2">
+                        <span class="pe-1">Total</span>
+                        <span class="ps-1 total-price">0 INR</span>
+                    </div>
+                    <button type="button" class="btn btn-primary ms-2 submit">Submit</button>
+                </div>
+            </div>
+        </div>
+
