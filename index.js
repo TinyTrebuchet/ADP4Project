@@ -32,7 +32,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 app.get('/', async (req, res) => {
     let sls = await salons.find({});
     let myapps = await appointments.find({ username: req.session.email });
@@ -103,7 +102,6 @@ app.post('/logout', async (req, res) => {
 })
 
 app.post('/appointment', async (req, res) => {
-    console.log(req.session.email);
     let { totalCost, appointmentTime, appointmentDate, services, salonName } = req.cookies;
     services = services.split(",");
 
@@ -128,6 +126,13 @@ app.post('/appointment', async (req, res) => {
     }
     res.redirect("/");
 });
+
+app.post('/delete', async (req, res) => {
+    let id = req.body.id;
+    let app = await appointments.findOneAndDelete({ _id: id });
+    req.flash("info", `Appoinment at ${app.salon} on ${app.date}, ${app.time} is cancelled.`);
+    res.redirect('/');
+})
 
 app.listen(3000, () => {
     console.log("STARTED");

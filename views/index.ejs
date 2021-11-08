@@ -48,12 +48,19 @@
             <div class="offcanvas-body">
                 <ol>
                     <% for(let i=0;i<myapps.length;i++){ %>
-                        <li>
-                            <b>
-                                <%=myapps[i].salon %>:
-                            </b>
-                            <%= myapps[i].date %>, <%=myapps[i].time %>
-                        </li>
+                        <form onsubmit="return confirm('Do you really want to delete the appointment?');"
+                            action="/delete" method="post">
+                            <li>
+                                <b>
+                                    <%=myapps[i].salon %>:
+                                </b>
+                                <%= myapps[i].date %>, <%=myapps[i].time %>
+                            </li>
+                            <input type="hidden" id="id" name="id" value="<%=myapps[i]._id %>">
+                            <button class="app-delete btn btn-danger">
+                                Cancel
+                            </button>
+                        </form>
                         <% } %>
 
                 </ol>
