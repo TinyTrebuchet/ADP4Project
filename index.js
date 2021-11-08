@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cookieSession = require('cookie-session');
-// const flash = require('connect-flash');
+const flash = require('connect-flash');
 var session = require('express-session')
 const mongoose = require('mongoose');
 const users = require('./models/user');
@@ -24,13 +24,14 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }))
-
+app.use(flash());
 app.use(cookieParser());
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.get('/', async (req, res) => {
     let sls = await salons.find({});
@@ -39,7 +40,9 @@ app.get('/', async (req, res) => {
     if (req.session.email) {
         loggedIn = true;
     }
-    res.render("index.ejs", { sls, loggedIn, myapps });
+
+
+    res.render("index.ejs", { sls, loggedIn, myapps, message: req.flash('info') });
 
     // res.sendFile(path.join(__dirname, "index.html"));
 })
@@ -50,15 +53,17 @@ app.post('/login', async (req, res) => {
     const isExisting = await users.findOne({ email: email });
     if (!isExisting) {
         // flash the message says no user with this username
+        req.flash('info', "Invalid Credentials");
         res.redirect('/');
     }
     else if (isExisting.password == password) {
         req.session.email = email;
         // document.cookie = "email=" + email + ";";
+        req.flash('info', `Hey, welcome back ${isExisting.name}`);
         res.redirect('/')
     }
     else {
-        // flash wrong password and redirect to login panel again
+        req.flash('info', "Invalid Credentials");
         res.redirect('/');
     }
 
@@ -73,7 +78,7 @@ app.post('/signin', async (req, res) => {
     console.log(isExisting);
 
     if (isExisting) {
-        // flash the message that user already exists with such username;
+        req.flash('info', "Account already signedup with email");
 
     }
     else {
@@ -84,6 +89,7 @@ app.post('/signin', async (req, res) => {
         })
 
         // flash the message says new entry created
+        req.flash('info', "Successfully signed Up");
         await user.save();
         console.log("new entry created");
     }
@@ -104,6 +110,7 @@ app.post('/appointment', async (req, res) => {
     const isExisting = await appointments.findOne({ salon: salonName, time: appointmentTime, date: appointmentDate });
     if (isExisting) {
         // flash, sorry time in not available for this salon
+        req.flash('info', "Sorry, choosen time is already booked");
         console.log("appointment already existed");
     }
     else {
@@ -117,6 +124,7 @@ app.post('/appointment', async (req, res) => {
 
         });
         await appoin.save();
+        req.flash('info', "Appointment Booked");
     }
     res.redirect("/");
 });
