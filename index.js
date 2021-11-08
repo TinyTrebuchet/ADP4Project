@@ -118,10 +118,7 @@ app.post('/appointment', async (req, res) => {
         });
         await appoin.save();
     }
-    let sls = await salons.find({});
-    let loggedIn = true;
-    let myapps = await appointments.find({ username: req.session.email });
-    res.render("index.ejs", { sls, loggedIn, myapps });
+    res.redirect("/");
 });
 
 app.listen(3000, () => {

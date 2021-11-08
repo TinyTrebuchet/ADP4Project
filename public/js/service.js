@@ -30,11 +30,11 @@ $(document).ready(function () {
         document.cookie = "totalCost=" + total + ";";
         document.cookie = "services=" + services.join(",") + ";";
 
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/appointment", true);
-        xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-        xhr.send(JSON.stringify({
-        }));
+        // var xhr = new XMLHttpRequest();
+        // xhr.open("POST", "/appointment", true);
+        // xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        // xhr.send(JSON.stringify({
+        // }));
 
         console.log(document.cookie);
     });
