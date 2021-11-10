@@ -34,6 +34,115 @@ $(document).ready(function () {
         xhttp.send();
 
     });
+
+
+    $('.register').on('click', function () {
+
+        $('#signin-form').submit();
+    })
+
+    $('.show-pass').click(function () {
+        $('#password').attr('type', $(this).is(':checked') ? 'text' : 'password');
+    });
+
+
+    let password = document.getElementById("inputPassword");
+    let confPass = document.getElementById("confirmPassword");
+    let passValid = false;
+    let conf = false;
+
+    // validation of password
+
+    password.onfocus = function () {
+        document.getElementById("messageBox").style.display = "block";
+    }
+
+    password.onblur = function () {
+        document.getElementById("messageBox").style.display = "none";
+    }
+
+    password.addEventListener('input', (e) => {
+        passValid = checkPassword(password);
+        validPassword();
+    });
+
+    confPass.addEventListener('input', (e) => {
+        if (password.value === confPass.value) {
+            conf = true;
+            document.getElementById("confirmPassBox").style.display = "none";
+        }
+        else {
+            conf = false;
+            document.getElementById("confirmPassBox").style.display = "block";
+        }
+        validPassword();
+    });
+
+    function validPassword() {
+        if (passValid === true && conf === true) {
+            $('.register').prop('disabled', false);
+            console.log("done");
+        }
+        else {
+            $('.register').prop('disabled', true);
+            console.log("not yet");
+        }
+    }
+
+    // function to check correctness of password
+
+    function checkPassword(password) {
+        let pass = password.value;
+        var lowerCaseLetters = /[a-z]/g;
+        var digits = /[0-9]/g;
+        var upperCaseLetters = /[A-Z]/g;
+        let isOk = true;
+
+        let lis = document.querySelectorAll(".warn");
+
+        if (pass.match(lowerCaseLetters)) {
+            console.log("changed")
+            lis[0].classList.add("valid");
+            lis[0].classList.remove("checker");
+        }
+        else {
+            lis[0].classList.remove("valid");
+            lis[0].classList.add("checker");
+            isOk = false;
+        }
+
+        if (pass.match(upperCaseLetters)) {
+            lis[1].classList.add("valid");
+            lis[1].classList.remove("checker");
+        }
+        else {
+            lis[1].classList.remove("valid");
+            lis[1].classList.add("checker");
+            isOk = false;
+        }
+
+        if (pass.match(digits)) {
+            lis[2].classList.add("valid");
+            lis[2].classList.remove("checker");
+        }
+        else {
+            lis[2].classList.remove("valid");
+            lis[2].classList.add("checker");
+            isOk = false;
+        }
+
+        if (pass.length >= 8) {
+            lis[3].classList.add("valid");
+            lis[3].classList.remove("checker");
+        }
+        else {
+            lis[3].classList.remove("valid");
+            lis[3].classList.add("checker");
+            isOk = false;
+        }
+        return isOk;
+    }
+
 });
 
 

@@ -171,7 +171,7 @@ body{
   .card-action:hover {
       color: #fff;
       background: #E26D5C;
-      -webkit-animation: pulse 1.5s infinite;
+      /* -webkit-animation: pulse 1.5s infinite; */
   }
 
   .card-heading {
@@ -206,6 +206,42 @@ body{
   }
 
 
+#messageBox{
+    display:none;
+    margin:6px;
+    background-color: lightgray;
+    padding: 15px;
+}
+
+
+#confirmPassBox{
+    display:none;
+    background-color: lightgray;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+color: green;
+}
+
+.valid:before {
+position: relative;
+left: -35px;
+
+}
+
+
+.checker{
+    color: red;
+    margin:10px;
+}
+
+.checker:before{
+    position: relative;
+    left:-35px;
+}
+
+/* 
   @-webkit-keyframes pulse {
       0% {
           -moz-transform: scale(0.9);
@@ -229,7 +265,7 @@ body{
           transform: scale(0.9);
           box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
       }
-  }
+  } */
 
 .appointment {
   color: white !important;

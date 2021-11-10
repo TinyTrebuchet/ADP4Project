@@ -64,7 +64,7 @@
                         <span class="pe-1">Total</span>
                         <span class="ps-1 total-price">0 INR</span>
                     </div>
-                    <button type="submit" form = "last-form" class="btn btn-primary ms-2 submit">Submit</button>
+                    <button class="btn btn-primary ms-2 submit">Submit</button>
                 </div>
             </div>
         </div>

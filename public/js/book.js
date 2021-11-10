@@ -20,15 +20,21 @@ $(document).ready(function () {
 
     $('.book-time').on('click', function () {
         document.cookie = "appointmentDate=" + $(".datepicker").val() + ";";
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function () {
-            document.querySelector(".wrapper").innerHTML = this.responseText;
-            var script = document.createElement('script');
-            script.src = "js/service.js";
-            $(".wrapper").append(script);
+        if (getCookie("appointmentDate") != "" && getCookie("appointmentTime") != "") {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                document.querySelector(".wrapper").innerHTML = this.responseText;
+                var script = document.createElement('script');
+                script.src = "js/service.js";
+                $(".wrapper").append(script);
+            }
+            xhttp.open("GET", "/txts/service.txt", true);
+            xhttp.send();
         }
-        xhttp.open("GET", "/txts/service.txt", true);
-        xhttp.send();
+        else {
+            alert("Please fill all the required fields!")
+        }
+
     });
 
 

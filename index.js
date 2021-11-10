@@ -123,9 +123,13 @@ app.post('/appointment', async (req, res) => {
         });
         await appoin.save();
         req.flash('info', "Appointment Booked");
+
     }
+    res.clearCookie("appointmentTime");
+    res.clearCookie("appointmentDate");
     res.redirect("/");
 });
+
 
 app.post('/delete', async (req, res) => {
     let id = req.body.id;

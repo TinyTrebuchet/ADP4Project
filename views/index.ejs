@@ -92,15 +92,23 @@
                                             <i class="fas fa-at py-1"></i>
                                         </div>
                                         <input type="email" name="email" autocomplete="off" class="form-control"
-                                            id="inputEmail">
+                                            id="Email" required="true">
                                     </div>
                                     <div class="col-12 px-4 mb-2">
                                         <div class="d-flex justify-content-between">
                                             <label for="inputPassword" class="form-label">Password</label>
                                             <i class="fa fa-key py-1"></i>
                                         </div>
-                                        <input type="password" name="password" autocomplete="off" class="form-control"
-                                            id="inputPassword">
+                                        <input type="password" name="password" required="true" id="password"
+                                            autocomplete="off" class="form-control" id="Password">
+
+                                        <div class="form-check">
+                                            <input class="form-check-input show-pass" type="checkbox" value=""
+                                                id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                Show Password
+                                            </label>
+                                        </div>
                                     </div>
                                     <div class="modal-footer d-flex justify-content-center">
                                         <button type="submit" value="login" form="login-form"
@@ -130,34 +138,54 @@
                                             <label for="inputName" class="form-label">Username</label>
                                             <i class="fas fa-user py-1"></i>
                                         </div>
-                                        <input type="text" name="username" autocomplete="off" class="form-control"
-                                            id="inputName">
+                                        <input type="text" name="username" required="true" autocomplete="off"
+                                            class="form-control" id="inputName">
                                     </div>
                                     <div class="col-12 px-4">
                                         <div class="d-flex justify-content-between">
                                             <label for="inputEmail" class="form-label">Email</label>
                                             <i class="fas fa-at py-1"></i>
                                         </div>
-                                        <input type="email" name="email" autocomplete="off" class="form-control"
-                                            id="inputEmail">
+                                        <input type="email" name="email" required="true" autocomplete="off"
+                                            class="form-control" id="inputEmail">
                                     </div>
                                     <div class="col-12 px-4">
                                         <div class="d-flex justify-content-between">
                                             <label for="inputPassword" class="form-label">Password</label>
                                             <i class="fa fa-key py-1"></i>
                                         </div>
-                                        <input type="password" name="password" class="form-control" id="inputPassword">
+                                        <input type="password" name="password" required="true" class="form-control"
+                                            id="inputPassword">
+                                        <div id="messageBox">
+                                            <ol>
+                                                <b> Password must contain the following:</b> <br>
+                                                <li class="checker warn" id='lowercase'>A lowercase letter</li>
+                                                <li class="checker warn" id='uppercase'>A capital(uppercase) letter</li>
+                                                <li class="checker warn" id='numeric'>A number</li>
+                                                <li class="checker warn" id='length'>Minimum 8 characters</li>
+                                            </ol>
+                                        </div>
                                     </div>
                                     <div class="col-12 px-4 mb-2">
                                         <div class="d-flex justify-content-between">
                                             <label for="confirmPassword" class="form-label">Confirm Password</label>
                                         </div>
-                                        <input type="password" class="form-control" id="confirmPassword">
+                                        <input type="password" required="true" class="form-control"
+                                            id="confirmPassword">
+                                        <div id="confirmPassBox">
+                                            <span class="checker">Both passwords must match</span>
+                                        </div>
                                     </div>
 
                                     <div class="modal-footer d-flex justify-content-center">
-                                        <button type="submit" value="signin" form="signin-form"
-                                            class="btn btn-success px-4">Register</button>
+                                        <button type="button" value="signin"
+                                            class="register btn btn-success px-4">Register</button>
+                                    </div>
+
+
+
+                                    <div id="confirmPassBox">
+                                        <span class="checker">Both passwords must match</span>
                                     </div>
                                 </form>
 
@@ -280,7 +308,13 @@
                                                 <div class="card-text">
                                                     <%=sls[count].address %>
                                                 </div>
-                                                <a id=<%=sls[count].name %> class="card-button appointment">Book</a>
+                                                <% if(!loggedIn){ %>
+                                                    <button class="card-button" data-bs-toggle="modal" type="button"
+                                                        data-bs-target="#loginModal">Book</button>
+                                                    <% }else{ %>
+                                                        <a id=<%=sls[count].name %> class="card-button
+                                                            appointment">Book</a>
+                                                        <% } %>
                                             </div>
                                         </div>
                                         <% count++; %>

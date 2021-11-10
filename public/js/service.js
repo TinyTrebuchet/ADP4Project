@@ -19,6 +19,12 @@ $(document).ready(function () {
 
     $('.submit').on('click', async function () {
         let checkboxes = document.querySelectorAll("input[type='checkbox']:checked");
+        if (checkboxes.length == 0) {
+            alert("Please fill atleast one service!");
+        }
+        else {
+            $('#last-form').submit();
+        }
         let total = 0;
         let services = [];
         checkboxes.forEach(function (userItem) {
