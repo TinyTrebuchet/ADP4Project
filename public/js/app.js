@@ -34,8 +34,6 @@ $(document).ready(function () {
         xhttp.send();
 
     });
-
-
 });
 
 

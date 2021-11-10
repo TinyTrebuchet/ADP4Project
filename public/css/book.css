@@ -2,7 +2,8 @@ body {
     color: #000;
     overflow-x: hidden;
     height: 100%;
-    background-color: #C5CAE9 !important;
+    /* background-color: #C5CAE9 !important; */
+    background-color: #FFFFFF;
     background-repeat: no-repeat;
     padding: 0px !important;
     font-weight: 400;
