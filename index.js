@@ -37,11 +37,9 @@ app.get('/', async (req, res) => {
     let myapps = await appointments.find({ username: req.session.email });
     let currDate = new Date();
 
-    console.log(currDate);
     let validApps = [];
     for (let apps of myapps) {
         let appDate = stringToDate(apps.date, apps.time);
-        console.log(appDate);
         if (appDate >= currDate) {
             validApps.push(apps);
         }
