@@ -1,0 +1,30 @@
+body {
+    background-color: azure;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Irish Grover', cursive;
+}
+
+.container{
+    margin: auto;
+}
+
+
+.col{
+    width: 50%;
+    margin: auto;
+}
+
+.card{
+    margin: 50px;
+}
+
+.card h5{
+    font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
