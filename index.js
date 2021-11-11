@@ -101,6 +101,10 @@ app.post('/logout', async (req, res) => {
     res.redirect('/');
 })
 
+app.get('/home', async (req, res) => {
+    res.redirect('/');
+})
+
 app.post('/appointment', async (req, res) => {
     let { totalCost, appointmentTime, appointmentDate, services, salonName } = req.cookies;
     services = services.split(",");

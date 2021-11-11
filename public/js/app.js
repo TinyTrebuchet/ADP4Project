@@ -16,6 +16,9 @@ function getCookie(cname) {
     return "";
 }
 
+function swapStyleSheet(sheet) {
+    document.getElementById("pagestyle").setAttribute('href', sheet);
+}
 
 $(document).ready(function () {
     $('.appointment').on('click', function () {
@@ -26,6 +29,7 @@ $(document).ready(function () {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             document.querySelector(".wrapper").innerHTML = this.responseText;
+            swapStyleSheet('css/book.css');
             var script = document.createElement('script');
             script.src = "js/book.js";
             $(".wrapper").append(script);
