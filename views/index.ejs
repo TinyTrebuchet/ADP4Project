@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="/css/style.css">
+    <link id="pagestyle" rel="stylesheet" href="/css/style.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -199,7 +199,7 @@
                 <!-- Navbar -->
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="#">OwO-Saloons</a>
+                        <a class="navbar-brand" href="#">OwO-Salons</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -211,7 +211,7 @@
                                     <a class="nav-link" href="#">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">About Us</a>
+                                    <a class="nav-link" href="#about">About Us</a>
                                 </li>
 
                             </ul>
@@ -246,6 +246,7 @@
                     </div>
                 </nav>
 
+                <!-- Carousel -->
                 <div id="container" class="pb-4">
                     <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -287,6 +288,7 @@
                     </div>
                 </div>
 
+                <!-- Salons -->
                 <section id="salons" class="px-5 pt-1">
 
                     <h3 class="font-weight-bold text-center">Book an Appointment</h3>
@@ -313,7 +315,7 @@
                                                         data-bs-target="#loginModal">Book</button>
                                                     <% }else{ %>
                                                         <a id=<%=sls[count].name %> class="card-button
-                                                            appointment">Book</a>
+                                                            appointment" href="#">Book</a>
                                                         <% } %>
                                             </div>
                                         </div>
@@ -328,17 +330,17 @@
                 </section>
 
 
-
-                <div class="footer-dark">
+                <!-- Footer -->
+                <div id="about" class="footer-dark">
                     <footer>
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-6 col-md-3 item">
-                                    <h3>Services</h3>
+                                    <h3>Features</h3>
                                     <ul>
-                                        <li><a href="#">Web design</a></li>
-                                        <li><a href="#">Development</a></li>
-                                        <li><a href="#">Hosting</a></li>
+                                        <li><a href="#">Fast bookings</a></li>
+                                        <li><a href="#">Flexible schedules</a></li>
+                                        <li><a href="#">Unlimited usage</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6 col-md-3 item">
@@ -350,15 +352,11 @@
                                     </ul>
                                 </div>
                                 <div class="col-md-6 item text">
-                                    <h3>Company Name</h3>
-                                    <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus.
-                                        Ut
-                                        vehicula
-                                        rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit
-                                        pulvinar
-                                        dictum
-                                        vel
-                                        in justo.</p>
+                                    <h3>OwO-Salons</h3>
+                                    <p>Having trouble finding the right hair or beauty business in your area? Or perhaps
+                                        you're traveling and would like to find a specialist at your destination? Well,
+                                        with our help, you can do so with just a few clicks.
+                                    </p>
                                 </div>
                                 <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a
                                         href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i

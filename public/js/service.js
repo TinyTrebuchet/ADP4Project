@@ -35,14 +35,6 @@ $(document).ready(function () {
 
         document.cookie = "totalCost=" + total + ";";
         document.cookie = "services=" + services.join(",") + ";";
-
-        // var xhr = new XMLHttpRequest();
-        // xhr.open("POST", "/appointment", true);
-        // xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-        // xhr.send(JSON.stringify({
-        // }));
-
-        console.log(document.cookie);
     });
 
     $('.form-check').on('click', function () {
@@ -54,6 +46,28 @@ $(document).ready(function () {
         });
         $(".total-price").html(t + " INR");
 
+    });
+
+    $('#service-backBtn').on('click', function () {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+            document.querySelector('.wrapper').innerHTML = this.responseText;
+            var script = document.createElement('script');
+            script.src = 'js/book.js';
+            $('.wrapper').append(script);
+        }
+        xhttp.open("GET", 'txts/book.txt', true);
+        xhttp.send();
+
+        var appointmentTime = getCookie('appointmentTime');
+        $('#' + appointmentTime.split(':').join('\\:')).addClass('select');
+
+        var appointmentDate = getCookie('appointmentDate');
+        $('.datepicker').datepicker('setDate', appointmentDate);
+
+        // delete cookies
+        document.cookie = 'services=; Max-Age=0;';
+        document.cookie = 'totalCost=; Max-Age=0;';
     });
 
 });
