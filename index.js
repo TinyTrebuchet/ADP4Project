@@ -57,6 +57,11 @@ app.get('/', async (req, res) => {
     // res.sendFile(path.join(__dirname, "index.html"));
 })
 
+
+app.get('/contributors', async (req, res) => {
+    res.render('contributors.ejs');
+})
+
 app.post('/login', async (req, res) => {
     const { email } = req.body;
     const { password } = req.body;

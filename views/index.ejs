@@ -26,7 +26,13 @@
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
 
-    <title>Hello, world!</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="/imgs/icon.png">
+    <title>OwO-Salons</title>
 </head>
 
 <body>
@@ -288,7 +294,7 @@
                 <!-- Salons -->
                 <section id="salons" class="px-5 pt-1">
 
-                    <h3 class="font-weight-bold text-center">Book an Appointment</h3>
+                    <h2 id="book-head" class="font-weight-bold text-center">Book an Appointment</h2>
                     <div id="card-container" class="container mt-4 p-4">
                         <% let count=0; %>
                             <% for(let i=0;i< Math.ceil(sls.length/4);i++){ %>
@@ -353,10 +359,7 @@
                                         with our help, you can do so with just a few clicks.
                                     </p>
                                 </div>
-                                <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a
-                                        href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i
-                                            class="icon ion-social-snapchat"></i></a><a href="#"><i
-                                            class="icon ion-social-instagram"></i></a></div>
+
                             </div>
                             <p class="copyright">OwO-Salons © 2021</p>
                         </div>

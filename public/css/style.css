@@ -270,3 +270,9 @@ left: -35px;
 .appointment {
   color: white !important;
 }
+
+
+#book-head{
+  font-family: 'Mochiy Pop P One', sans-serif;
+  margin: 40px;
+}
