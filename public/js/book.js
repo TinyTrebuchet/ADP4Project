@@ -30,13 +30,11 @@ function askByPost(cell, date) {
             ans = this.responseText;
             if (ans === "false") {
                 cell.classList.add("dark");
-                cell.off("click");
                 cell.classList.remove("cell");
             }
             else {
                 cell.classList.add("cell");
                 cell.classList.remove("dark");
-                cell.onn("click");
             }
         }
     }
@@ -75,7 +73,7 @@ $(document).ready(function () {
         let cells = document.querySelectorAll(".time");
         let date = $(".datepicker").val();
         for (let cell of cells) {
-            cell.classList.remove("select");
+            cell.classList.remove('select');
             askByPost(cell, date);
         }
     });
@@ -88,16 +86,9 @@ $(document).ready(function () {
         endDate: '+7d'
     });
 
-    $('.cell').click(function () {
+    $(document).on('click', '.cell', function () {
         $('.cell').removeClass('select');
         $(this).addClass('select');
-
-    });
-
-
-    // saving time into cookie
-
-    $(".cell").on('click', function () {
         document.cookie = "appointmentTime=" + this.innerText;
     });
 
