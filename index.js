@@ -33,6 +33,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', async (req, res) => {
+    res.clearCookie("appointmentTime");
+    res.clearCookie("appointmentDate");
     let sls = await salons.find({});
     let myapps = await appointments.find({ username: req.session.email });
     let currDate = new Date();
@@ -143,8 +145,6 @@ app.post('/appointment', async (req, res) => {
         req.flash('info', "Appointment Booked");
 
     }
-    res.clearCookie("appointmentTime");
-    res.clearCookie("appointmentDate");
     res.redirect("/");
 });
 
@@ -156,10 +156,25 @@ app.post('/delete', async (req, res) => {
     res.redirect('/');
 })
 
+app.post('/checkTime', async (req, res) => {
+    let { salonName, t, d } = req.body;
+    let isExist = await appointments.find({ salon: salonName, time: t, date: d });
+    if (isEmpty(isExist)) {
+        res.send(true);
+    }
+    else {
+        res.send(false);
+    }
+})
+
+
 app.listen(3000, () => {
     console.log("STARTED");
 })
 
+
+
+// Auxilary functions
 
 function getTodayDate() {
     var today = new Date();
@@ -181,4 +196,8 @@ function stringToDate(str, time) {
     }
     let newDate = new Date(parseInt(arr[2]), parseInt(arr[1]) - 1, parseInt(arr[0]), t);
     return newDate;
+}
+
+function isEmpty(obj) {
+    return Object.keys(obj).length === 0;
 }

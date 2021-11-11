@@ -13,11 +13,42 @@ function getCookie(cname) {
     return "";
 }
 
+function delete_cookie(name) {
+    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+
+function askByPost(cell, date) {
+    // making cells valid or invalid
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", '/checkTime', true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    let ans = false;
+    xhr.onreadystatechange = function () {
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+            ans = this.responseText;
+            if (ans === "false") {
+                cell.classList.add("dark");
+                cell.off("click");
+                cell.classList.remove("cell");
+            }
+            else {
+                cell.classList.add("cell");
+                cell.classList.remove("dark");
+                cell.onn("click");
+            }
+        }
+    }
+    xhr.send(`salonName=${getCookie("salonName")}&t=${cell.innerText}&d=${date}`);
+
+}
+
+
+
 $(document).ready(function () {
 
-
-    console.log(getCookie("salon-name"));
-
+    // saving details of time and date into cookies
     $('.book-time').on('click', function () {
         document.cookie = "appointmentDate=" + $(".datepicker").val() + ";";
         if (getCookie("appointmentDate") != "" && getCookie("appointmentTime") != "") {
@@ -38,7 +69,18 @@ $(document).ready(function () {
     });
 
 
+    // adding event listener on date picker to get available time schedules
+    $('.datepicker').on('change', function () {
+        delete_cookie("appointmentTime");
+        let cells = document.querySelectorAll(".time");
+        let date = $(".datepicker").val();
+        for (let cell of cells) {
+            cell.classList.remove("select");
+            askByPost(cell, date);
+        }
+    });
 
+    // datepicker formation
     $('.datepicker').datepicker({
         format: 'dd-mm-yyyy',
         autoclose: true,
@@ -49,12 +91,14 @@ $(document).ready(function () {
     $('.cell').click(function () {
         $('.cell').removeClass('select');
         $(this).addClass('select');
+
     });
 
 
+    // saving time into cookie
+
     $(".cell").on('click', function () {
         document.cookie = "appointmentTime=" + this.innerText;
-        console.log(document.cookie);
     });
 
 });

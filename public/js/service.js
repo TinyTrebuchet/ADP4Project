@@ -59,11 +59,7 @@ $(document).ready(function () {
         xhttp.open("GET", 'txts/book.txt', true);
         xhttp.send();
 
-        var appointmentTime = getCookie('appointmentTime');
-        $('#' + appointmentTime.split(':').join('\\:')).addClass('select');
 
-        var appointmentDate = getCookie('appointmentDate');
-        $('.datepicker').datepicker('setDate', appointmentDate);
 
         // delete cookies
         document.cookie = 'services=; Max-Age=0;';

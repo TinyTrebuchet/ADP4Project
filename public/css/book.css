@@ -18,6 +18,8 @@ body {
     padding-right: 20%;
 }
 
+/* selectable cells */
+
 .cell {
     border: 1px solid #BDBDBD;
     margin: 2px;
@@ -32,6 +34,13 @@ body {
     background-color: #3D5AFE;
     color: #fff
 }
+
+.dark{
+    border: 1px solid #BDBDBD;
+    margin: 2px;
+    background-color: grey;
+}
+
 
 .card {
     box-shadow: 0px 4px 8px 0px #7986CB
