@@ -53,16 +53,16 @@
                     </div>
                     <div class="offcanvas-body">
                         <ol>
-                            <% for(let i=0;i<myapps.length;i++){ %>
+                            <% for(let i=0;i<validApps.length;i++){ %>
                                 <form onsubmit="return confirm('Do you really want to delete the appointment?');"
                                     action="/delete" method="post">
                                     <li>
                                         <b>
-                                            <%=myapps[i].salon %>:
+                                            <%=validApps[i].salon %>:
                                         </b>
-                                        <%= myapps[i].date %>, <%=myapps[i].time %>
+                                        <%= validApps[i].date %>, <%=validApps[i].time %>
                                     </li>
-                                    <input type="hidden" id="id" name="id" value="<%=myapps[i]._id %>">
+                                    <input type="hidden" id="id" name="id" value="<%=validApps[i]._id %>">
                                     <button class="app-delete btn btn-danger">
                                         Cancel
                                     </button>
@@ -208,9 +208,6 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Home</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" href="#about">About Us</a>
                                 </li>
 
@@ -346,9 +343,7 @@
                                 <div class="col-sm-6 col-md-3 item">
                                     <h3>About</h3>
                                     <ul>
-                                        <li><a href="#">Company</a></li>
-                                        <li><a href="#">Team</a></li>
-                                        <li><a href="#">Careers</a></li>
+                                        <li><a href="/contributors">Team</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-md-6 item text">
@@ -363,7 +358,7 @@
                                             class="icon ion-social-snapchat"></i></a><a href="#"><i
                                             class="icon ion-social-instagram"></i></a></div>
                             </div>
-                            <p class="copyright">Company Name © 2018</p>
+                            <p class="copyright">OwO-Salons © 2021</p>
                         </div>
                     </footer>
                 </div>

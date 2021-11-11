@@ -35,13 +35,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', async (req, res) => {
     let sls = await salons.find({});
     let myapps = await appointments.find({ username: req.session.email });
+    let currDate = new Date();
+
+    console.log(currDate);
+    let validApps = [];
+    for (let apps of myapps) {
+        let appDate = stringToDate(apps.date, apps.time);
+        console.log(appDate);
+        if (appDate >= currDate) {
+            validApps.push(apps);
+        }
+    }
     let loggedIn = false;
     if (req.session.email) {
         loggedIn = true;
     }
 
 
-    res.render("index.ejs", { sls, loggedIn, myapps, message: req.flash('info') });
+    res.render("index.ejs", { sls, loggedIn, validApps, message: req.flash('info') });
 
     // res.sendFile(path.join(__dirname, "index.html"));
 })
@@ -145,3 +156,26 @@ app.post('/delete', async (req, res) => {
 app.listen(3000, () => {
     console.log("STARTED");
 })
+
+
+function getTodayDate() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = dd + '-' + mm + '-' + yyyy;
+    return today;
+
+}
+
+function stringToDate(str, time) {
+    let arr = str.split('-');
+    let arr_time = time.split(":");
+    let t = arr_time[0];
+    if (time.slice(-2) == "PM" && t != 12) {
+        t += 12;
+    }
+    let newDate = new Date(parseInt(arr[2]), parseInt(arr[1]) - 1, parseInt(arr[0]), t);
+    return newDate;
+}
