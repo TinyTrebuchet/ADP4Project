@@ -9,11 +9,13 @@
 
 1. Install all the dependencies using "npm i" in the powershell opened in project folder.
 
-2. Run the command "nodemon index.js" to run the server at port "3000".
+2. To populate the database, run seed.js.
 
-3. Open your browser and go the url "localhost:3000".
+3. Run the command "nodemon index.js" to run the server at port "3000".
 
-4. Thanks.
+4. Open your browser and go the url "localhost:3000".
+
+5. Thanks.
 
 ## About the project
 
