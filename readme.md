@@ -1,5 +1,9 @@
 # Run the Project
 
+## About the project
+
+The project is about a salon slot booking application which aims to provide the user with a tool to manage all their salon appointments in one place. The application allows the user to make appointments with different salons and manage them together in one place. It also allows to cancel appointments.
+
 ## Required Softwares
 
 1. Node.js.
@@ -16,7 +20,3 @@
 4. Open your browser and go the url "localhost:3000".
 
 5. Thanks.
-
-## About the project
-
-The project is about a salon slot booking application which aims to provide the user with a tool to manage all their salon appointments in one place. The application allows the user to make appointments with different salons and manage them together in one place. It also allows to cancel appointments.
